@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import { AmChartsModule } from '@amcharts/amcharts3-angular';
+import { HighchartsChartModule } from 'highcharts-angular';
 
 import { AppComponent } from './app.component';
 import { NgxBarChartComponent } from './NgxBarChart/ngx.barchart.component';
@@ -19,6 +20,8 @@ import { VerticalBarChartsComponent } from './VerticalBarCharts/verrtical-bar-ch
 import { HorizontalBarChartsComponent } from './HorizontalBarCharts/horizontal-bar-charts.component';
 import { GaugeChartsComponent } from './AllGaugeCharts/gauge-charts.component';
 import { StackedChartsComponent } from './AllStackedCharts/stacked-charts.component';
+import { HighBarChartComponent } from './HighBarChart/high.barchart.component';
+import { HighStackedChartComponent } from './HighStackedChart/high.stackedchart.component';
 
 
 const appRoutes: Routes = [
@@ -46,13 +49,16 @@ const appRoutes: Routes = [
     VerticalBarChartsComponent,
     HorizontalBarChartsComponent,
     GaugeChartsComponent,
-    StackedChartsComponent
+    StackedChartsComponent,
+    HighBarChartComponent,
+    HighStackedChartComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     NgxChartsModule,
-    AmChartsModule
+    AmChartsModule,
+    HighchartsChartModule
   ],
   providers: [],
   bootstrap: [AppComponent]
