@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import * as Highcharts from 'highcharts';
+// import * as more from 'highcharts/highcharts-more.src';
+// import * as exporting from 'highcharts/modules/exporting.src';
 
 @Component({
   selector: 'app-high-gauge-chart',

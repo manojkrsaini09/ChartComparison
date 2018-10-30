@@ -4,6 +4,9 @@ import { RouterModule, Routes } from '@angular/router';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import { AmChartsModule } from '@amcharts/amcharts3-angular';
 import { HighchartsChartModule } from 'highcharts-angular';
+// import { ChartModule, HIGHCHARTS_MODULES } from 'angular-highcharts';
+
+
 
 import { AppComponent } from './app.component';
 import { NgxBarChartComponent } from './NgxBarChart/ngx.barchart.component';
@@ -34,7 +37,8 @@ const appRoutes: Routes = [
   {path: 'verticalBarCharts' , component : VerticalBarChartsComponent},
   {path: 'horizontalBarCharts' , component : HorizontalBarChartsComponent},
   {path: 'gaugeCharts' , component : GaugeChartsComponent},
-  {path: 'stackedCharts' , component : StackedChartsComponent}
+  {path: 'stackedCharts' , component : StackedChartsComponent},
+  {path: 'amchart' , component : AmChartsComponent}
  ];
 
 @NgModule({
@@ -67,7 +71,9 @@ const appRoutes: Routes = [
     AmChartsModule,
     HighchartsChartModule
   ],
-  providers: [],
+  // providers: [
+  //     { provide: HighchartsChartModule, useFactory: () => [ more, exporting ] } // add as factory to your providers
+  // ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
