@@ -38,8 +38,8 @@ export class AmcBarChartComponent implements AfterViewInit, OnDestroy {
         'type': 'column',
         'valueField': 'value',
         'fillColorsField': 'color',
-        'width' : 4,
-        'height' : 4
+        // 'width' : 4,
+        // 'height' : 4
       }],
       'categoryField': 'name',
        'rotate': false,

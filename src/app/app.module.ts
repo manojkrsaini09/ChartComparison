@@ -14,11 +14,20 @@ import { AmChartsComponent } from './AmCharts/am.charts.component';
 import { AmcBarChartComponent } from './AmBarChart/amc.barchart.component';
 import { AmcHorizontalBarChartComponent } from './AmHorizontalBarChart/amc.horizontal-barchart.component';
 import { AmcGaugeChartComponent } from './AmGaugeChart/amc.gauge.component';
+import { AmcStackedChartComponent } from './AmStackedChart/amc.stacked-chart.component';
+import { VerticalBarChartsComponent } from './VerticalBarCharts/verrtical-bar-charts.component';
+import { HorizontalBarChartsComponent } from './HorizontalBarCharts/horizontal-bar-charts.component';
+import { GaugeChartsComponent } from './AllGaugeCharts/gauge-charts.component';
+import { StackedChartsComponent } from './AllStackedCharts/stacked-charts.component';
 
 
 const appRoutes: Routes = [
   {path: 'ngxchart' , component : NGXChartsComponent},
-  {path: 'amchart' , component : AmChartsComponent}
+  {path: 'amchart' , component : AmChartsComponent},
+  {path: 'verticalBarCharts' , component : VerticalBarChartsComponent},
+  {path: 'horizontalBarCharts' , component : HorizontalBarChartsComponent},
+  {path: 'gaugeCharts' , component : GaugeChartsComponent},
+  {path: 'stackedCharts' , component : StackedChartsComponent},
  ];
 
 @NgModule({
@@ -32,7 +41,12 @@ const appRoutes: Routes = [
     AmcBarChartComponent,
     AmChartsComponent,
     AmcHorizontalBarChartComponent,
-    AmcGaugeChartComponent
+    AmcGaugeChartComponent,
+    AmcStackedChartComponent,
+    VerticalBarChartsComponent,
+    HorizontalBarChartsComponent,
+    GaugeChartsComponent,
+    StackedChartsComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
