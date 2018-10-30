@@ -22,15 +22,19 @@ import { GaugeChartsComponent } from './AllGaugeCharts/gauge-charts.component';
 import { StackedChartsComponent } from './AllStackedCharts/stacked-charts.component';
 import { HighBarChartComponent } from './HighBarChart/high.barchart.component';
 import { HighStackedChartComponent } from './HighStackedChart/high.stackedchart.component';
+import { HighGaugeChartComponent } from './HighGaugeChart/high.gaugechart.component';
+import { HighChartsComponent } from './HighCharts/high.charts.component';
+import { HighHorizontalBarChartComponent } from './HighHorizontalBarChart/high.horizontalbarchart.component';
 
 
 const appRoutes: Routes = [
   {path: 'ngxchart' , component : NGXChartsComponent},
-  {path: 'amchart' , component : AmChartsComponent},
+  {path: 'highchart' , component : HighChartsComponent},
+  {path: 'stackedCharts' , component : StackedChartsComponent},
   {path: 'verticalBarCharts' , component : VerticalBarChartsComponent},
   {path: 'horizontalBarCharts' , component : HorizontalBarChartsComponent},
   {path: 'gaugeCharts' , component : GaugeChartsComponent},
-  {path: 'stackedCharts' , component : StackedChartsComponent},
+  {path: 'stackedCharts' , component : StackedChartsComponent}
  ];
 
 @NgModule({
@@ -51,7 +55,10 @@ const appRoutes: Routes = [
     GaugeChartsComponent,
     StackedChartsComponent,
     HighBarChartComponent,
-    HighStackedChartComponent
+    HighStackedChartComponent,
+    HighGaugeChartComponent,
+    HighChartsComponent,
+    HighHorizontalBarChartComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
