@@ -28,6 +28,7 @@ import { HighStackedChartComponent } from './HighStackedChart/high.stackedchart.
 import { HighGaugeChartComponent } from './HighGaugeChart/high.gaugechart.component';
 import { HighChartsComponent } from './HighCharts/high.charts.component';
 import { HighHorizontalBarChartComponent } from './HighHorizontalBarChart/high.horizontalbarchart.component';
+import { AmcBarChartDrillDownComponent } from './AmBarChartDrillDown/amc.barchartdrilldown.component';
 
 
 const appRoutes: Routes = [
@@ -62,7 +63,8 @@ const appRoutes: Routes = [
     HighStackedChartComponent,
     HighGaugeChartComponent,
     HighChartsComponent,
-    HighHorizontalBarChartComponent
+    HighHorizontalBarChartComponent,
+    AmcBarChartDrillDownComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
