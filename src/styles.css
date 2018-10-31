@@ -2,3 +2,6 @@
 .chart_div{
     height:450px;
 }
+.amcharts-axis-band-outerBand   {
+    filter: url(#dropshadow);
+  }
