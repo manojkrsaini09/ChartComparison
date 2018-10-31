@@ -9,54 +9,89 @@ import { AmChartsService, AmChart } from '@amcharts/amcharts3-angular';
 export class AmcGaugeChartComponent implements AfterViewInit, OnDestroy {
   constructor(private AmCharts: AmChartsService) {}
   private chart: AmChart;
+  
   ngAfterViewInit() {
     this.chart = this.AmCharts.makeChart('chartdiv3', {
-      'type': 'gauge',
-  'theme': 'light',
-  'startDuration': 0.3,
-  'marginTop': 20,
-  'marginBottom': 50,
-  'axes': [{
-    'axisAlpha': 0.3,
-    'endAngle': 360,
-    'endValue': 12,
-    'minorTickInterval': 0.2,
-    'showFirstLabel': false,
-    'startAngle': 0,
-    'axisThickness': 1,
-    'valueInterval': 1
+      "theme": "light",
+  "type": "gauge",
+  "addClassNames": true,
+  "defs": {
+    "filter": {
+      "id": "dropshadow",
+      "x": "-10%",
+      "y": "-10%",
+      "width": "120%",
+      "height": "120%",
+      "feOffset": {
+        "result": "offOut",
+        "in": "SourceAlpha",
+        "dx": "2",
+        "dy": "0"
+      },
+      "feGaussianBlur": {
+        "result": "blurOut",
+        "in": "offOut",
+        "stdDeviation": "5"
+      },
+      "feColorMatrix": {
+            "result": "blurOut",
+            "type": "matrix",
+            "values": "0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .2 0"
+        },
+      "feBlend": {
+        "in": "SourceGraphic",
+        "in2": "blurOut",
+        "mode": "normal"
+      }
+    }
+  },
+  "axes": [{
+    "topTextFontSize": 30,
+    "topTextYOffset": 70,
+    "topText" : 68,         // Chart Value Text
+    "axisColor": "#FFFFFF", // Inner Ring Color
+    "axisThickness": 0, // Inner Ring Size
+    "endValue": 100,    // Chart End Value
+    "gridInside": true,
+    "inside": true,
+    "radius": "80%",
+    "tickLength" : 10,
+    "minorTickLength" : 5,
+    "valueInterval": 25,
+    "tickColor": "#000000",
+    "minorTickInterval": 5,
+    "startAngle": -160,
+    "endAngle": 160,
+    "unit": "",  // Tick Interval Units
+    "bandOutlineAlpha": 0,
+    "bands": [{
+      //"color": "#0080ff",
+      "id": "outerBand",
+      "color": "#ffffff",  // Outer Circle Color
+      "endValue": 120,     // Outer Circle End Value
+      "innerRadius": "105%",
+      "radius": "125%",
+      "gradientRatio": [0.0, 0, -0.0],
+      "startValue": 0
+    }, 
+    {
+      "color": "#8D288F",   // Inner Circle Color
+      "endValue": 68,       // Chart Value Inner Band
+      "innerRadius": "111%",
+      "radius": "119%",
+      "gradientRatio": [0.5, 0, -0.5],
+      "startValue": 0
+    }]
   }],
-  'arrows': [{
-    'radius': '50%',
-    'title': 'First arrow',
-    'color': '#00CC00',
-    'innerRadius': 0,
-    'clockWiseOnly': true,
-    'nailRadius': 10,
-    'nailAlpha': 1
-  }, {
-    'title': 'Second arrow',
-    'color': '#0000CC',
-    'nailRadius': 0,
-    'radius': '80%',
-    'startWidth': 6,
-    'innerRadius': 0,
-    'clockWiseOnly': true,
-    'value': 8
-  }, {
-    'title': 'Third arrow',
-    'color': '#CC0000',
-    'nailRadius': 4,
-    'startWidth': 3,
-    'innerRadius': 0,
-    'clockWiseOnly': true,
-    'nailAlpha': 1,
-    'value': 4
-  }],
-  'legend': {
-    'align': 'center'
-  }
-    });
+  "arrows": [{
+    "alpha": 0,       // Arrow Opacity
+    "borderAlpha": 0, // Arrow Border Opacity
+    "innerRadius": "35%",
+    "nailRadius": 0,
+    "radius": "110%",
+    "value": 68     // Chart Value Angle Arrow
+  }]
+});
   }
 
   ngOnDestroy() {
