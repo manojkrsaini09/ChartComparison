@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { RouterModule, Routes } from '@angular/router';
 import {NgxChartsModule} from '@swimlane/ngx-charts';
 import { AmChartsModule } from '@amcharts/amcharts3-angular';
@@ -29,6 +30,8 @@ import { HighGaugeChartComponent } from './HighGaugeChart/high.gaugechart.compon
 import { HighChartsComponent } from './HighCharts/high.charts.component';
 import { HighHorizontalBarChartComponent } from './HighHorizontalBarChart/high.horizontalbarchart.component';
 import { AmcBarChartDrillDownComponent } from './AmBarChartDrillDown/amc.barchartdrilldown.component';
+import { InteractiveChartsComponent } from './InteractiveCharts/interactive.component';
+import { DrillChartsComponent } from './InteractiveCharts/drill.component';
 
 
 const appRoutes: Routes = [
@@ -39,7 +42,9 @@ const appRoutes: Routes = [
   {path: 'horizontalBarCharts' , component : HorizontalBarChartsComponent},
   {path: 'gaugeCharts' , component : GaugeChartsComponent},
   {path: 'stackedCharts' , component : StackedChartsComponent},
-  {path: 'amchart' , component : AmChartsComponent}
+  {path: 'amchart' , component : AmChartsComponent},
+  {path: 'interactiveCharts' , component : InteractiveChartsComponent},
+  {path: 'drillCharts' , component : DrillChartsComponent},
  ];
 
 @NgModule({
@@ -64,14 +69,17 @@ const appRoutes: Routes = [
     HighGaugeChartComponent,
     HighChartsComponent,
     HighHorizontalBarChartComponent,
-    AmcBarChartDrillDownComponent
+    AmcBarChartDrillDownComponent,
+    InteractiveChartsComponent,
+    DrillChartsComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
     BrowserModule,
     NgxChartsModule,
     AmChartsModule,
-    HighchartsChartModule
+    HighchartsChartModule,
+    FormsModule,
   ],
   // providers: [
   //     { provide: HighchartsChartModule, useFactory: () => [ more, exporting ] } // add as factory to your providers
