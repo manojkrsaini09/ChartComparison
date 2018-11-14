@@ -31,6 +31,7 @@ import { HighChartsComponent } from './HighCharts/high.charts.component';
 import { HighHorizontalBarChartComponent } from './HighHorizontalBarChart/high.horizontalbarchart.component';
 import { AmcBarChartDrillDownComponent } from './AmBarChartDrillDown/amc.barchartdrilldown.component';
 import { InteractiveChartsComponent } from './InteractiveCharts/interactive.component';
+import { InteractiveAmChartsComponent } from './InteractiveAmCharts/interactiveam.component';
 import { DrillChartsComponent } from './InteractiveCharts/drill.component';
 
 
@@ -44,6 +45,7 @@ const appRoutes: Routes = [
   {path: 'stackedCharts' , component : StackedChartsComponent},
   {path: 'amchart' , component : AmChartsComponent},
   {path: 'interactiveCharts' , component : InteractiveChartsComponent},
+  {path: 'interactiveAmCharts' , component : InteractiveAmChartsComponent},
   {path: 'drillCharts' , component : DrillChartsComponent},
  ];
 
@@ -71,7 +73,8 @@ const appRoutes: Routes = [
     HighHorizontalBarChartComponent,
     AmcBarChartDrillDownComponent,
     InteractiveChartsComponent,
-    DrillChartsComponent
+    DrillChartsComponent,
+    InteractiveAmChartsComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

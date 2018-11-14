@@ -1,0 +1,12 @@
+<div style="width: 100%; float: left;">
+    <h2>Demo #1: AMcharts with a basic editor</h2>
+    <div style="width:30%; float: left;">
+        Chart Title :<input type="text" [(ngModel)]="chartTitle" /> <button (click)="updateTitle()">Update Title</button>
+        <br/><br/>
+        Chart Type :<input type="text" [(ngModel)]="chartType" /> <button (click)="updateType()">Update Type</button>
+    </div>
+    <div style="width:65%; float: left;">
+        <div id="chartdiv" [style.width.%]="100" [style.height.px]="420"></div>
+    </div>
+</div>
+
