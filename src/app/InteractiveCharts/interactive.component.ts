@@ -1,6 +1,6 @@
 declare var require: any;
 
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import * as Highcharts from 'highcharts';
 import More from 'highcharts/highcharts-more';
 More(Highcharts);
@@ -10,6 +10,9 @@ Drilldown(Highcharts);
 import Exporting from 'highcharts/modules/exporting';
 // Initialize exporting module.
 Exporting(Highcharts);
+
+import Data from 'highcharts/modules/data';
+Data(Highcharts);
 
 
 /*const HC_map = require('highcharts/modules/map');
@@ -43,15 +46,24 @@ Highcharts.setOptions({
   templateUrl: './interactive.component.html'
 })
 
-export class InteractiveChartsComponent {
+export class InteractiveChartsComponent implements OnInit {
+    
+    ngOnInit() {
+        this.createChart();
+    }
+
   // For all demos:
   Highcharts = Highcharts;
-  timePeriodSelect = '';
+  drillTypeSelect='Level';
+  timePeriodSelect = 'YTD';
   chartTitle = '';
-  chartType = '';
+  chartType = 'column';
+  optFromInput;
 
   // Demo #1
-  optFromInputString = `
+  createChart(){
+    let componentScope = this;
+  /*optFromInputString = `
   {
     "chart": {
         "type": "column"
@@ -72,6 +84,9 @@ export class InteractiveChartsComponent {
             "borderWidth": "0",
             "dataLabels": {
                 "enabled": "true"
+            },
+            "events":{
+                "click": "function (event) { console.log('Hii 22');}"
             }
         }
     },
@@ -87,7 +102,10 @@ export class InteractiveChartsComponent {
             "name": "Bottle Lines",
             "y": 67,
             "drilldown": "bottleLines"
-        }]
+        }],
+      "events":{
+        "click": "function (event) { console.log('Hii');}"
+        }
     }],
     "drilldown": {
         "series": [{
@@ -107,17 +125,191 @@ export class InteractiveChartsComponent {
   }
  `;
 
-  optFromInput = JSON.parse(this.optFromInputString);
- 
+  //optFromInput = JSON.parse(this.optFromInputString);*/
+  
+  this.optFromInput = 
+    {
+        chart: {
+            type: "column",
+            animation: true
+        },
+        title: {
+            text: "Basic drilldown"
+        },
+        xAxis: {
+            type: "category"
+        },
+    
+        legend: {
+            enabled: true
+        },
+    
+        plotOptions: {
+            series: {
+                borderWidth: 0,
+                dataLabels: {
+                    enabled: true
+                },
+            }
+        },
+        series: [{
+            name: "OEE",
+            colorByPoint: true,
+            data: [{
+                name: "Can Lines",
+                y: 56,
+                drilldown: "canLines"
+            }, {
+                name: "Bottle Lines",
+                y: 67,
+                drilldown: "bottleLines"
+            }],
+          events:{
+            click: function (event) { 
+                componentScope.drillDown(event.point.drilldown);
+            }
+            }
+        }],
+        drilldown: {
+            series: [{
+                id: "canLines1",
+                data: [
+                    ["Line 1", 43],
+                    ["Line 2", 26]
+                ]
+            }, {
+                id: "bottleLines1",
+                data: [
+                    ["Line 5", 58],
+                    ["Line 6", 66]
+                ]
+            }]
+        }
+      }
+; 
+    }
   updateFromInput = false;
+  back(level : any) {
+    var newData = [{
+        name: "Can Lines",
+        y: 56,
+        drilldown: "canLines"
+    }, {
+        name: "Bottle Lines",
+        y: 67,
+        drilldown: "bottleLines"
+    }];
+    this.optFromInput.series[0].data = newData;
+    this.updateFromInput = true;
+  }
 
+  drillDown(level : any) {
+    console.log('Chart instance: '+level);
+    console.log('Drill Type : '+this.drillTypeSelect);
+    console.log('CHart Type : '+this.chartType);
+    console.log('Time Period Type : '+this.timePeriodSelect);
+    this.optFromInput.chart.type =  this.chartType;
+    if(level=='canLines'  && this.drillTypeSelect=='Level'){
+        var newData =  [{
+            name: "Line 1",
+            y: 56,
+            drilldown: "line1"
+        }, {
+            name: "Line 2",
+            y: 67,
+            drilldown: "line2"
+        }];
+        this.optFromInput.series[0].data = newData;
+        this.updateFromInput = true;
+    }else if(level=='canLines'  && this.drillTypeSelect=='KPI'){
+        var newData =  [{
+            name: "Availability",
+            y: 45,
+            drilldown: "Availability"
+        }, {
+            name: "Performance",
+            y: 34,
+            drilldown: "Performance"
+        }, {
+            name: "Quality",
+            y: 31,
+            drilldown: "Quality"
+        }];
+        this.optFromInput.series[0].data = newData;
+        this.updateFromInput = true;
+    }else if(level=='canLines'  && this.drillTypeSelect=='Time'){
+        var newData =  [{
+            name: "Jan",
+            y: 45,
+            drilldown: "Jan"
+        }, {
+            name: "Feb",
+            y: 45,
+            drilldown: "Feb"
+        }, {
+            name: "Mar",
+            y: 31,
+            drilldown: "Mar"
+        },
+        {
+            name: "Apr",
+            y: 31,
+            drilldown: "Apr"
+        },
+        {
+            name: "May",
+            y: 31,
+            drilldown: "May"
+        },
+        {
+            name: "Jun",
+            y: 31,
+            drilldown: "Jun"
+        },
+        {
+            name: "Jul",
+            y: 31,
+            drilldown: "Jul"
+        },
+        {
+            name: "Aug",
+            y: 31,
+            drilldown: "Aug"
+        },
+        {
+            name: "Sep",
+            y: 31,
+            drilldown: "Sep"
+        },
+        {
+            name: "Oct",
+            y: 31,
+            drilldown: "Oct"
+        },
+        {
+            name: "Nov",
+            y: 31,
+            drilldown: "Nov"
+        },
+        {
+            name: "Dec",
+            y: 31,
+            drilldown: "Dec"
+        }
+    ];
+        this.optFromInput.series[0].data = newData;
+        this.updateFromInput = true;
+    }
+
+
+  }
   // Demonstrate chart instance
   logChartInstance(chart: any) {
     console.log('Chart instance: ', chart);
   }
 
   updateInputChart() {
-    this.optFromInput = JSON.parse(this.optFromInputString);
+    //this.optFromInput = JSON.parse(this.optFromInputString);
   }
   updateTitle() {
     this.optFromInput.title.text =  this.chartType;
@@ -126,6 +318,7 @@ export class InteractiveChartsComponent {
   updateType() {
       console.log(this.chartType);
     this.optFromInput.chart.type =  this.chartType;
+    this.optFromInput.series[0].type = this.chartType;
     console.log(this.chartType);
     this.updateFromInput = true;
   }
@@ -184,7 +377,7 @@ export class InteractiveChartsComponent {
   };
 
   toggleSeriesType(index = 0) {
-    this.optFromInput.series[index].type = this.seriesTypes[this.optFromInput.series[index].type];
+    //this.optFromInput.series[index].type = this.seriesTypes[this.optFromInput.series[index].type];
     // nested change - must trigger update
     this.updateFromInput = true;
   }

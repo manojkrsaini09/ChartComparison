@@ -14,7 +14,7 @@ Exporting(Highcharts);
 
 
 @Component({
-  selector: 'my-app',
+  selector: 'drill-high-comp',
   templateUrl: './drill.component.html',
   styleUrls: ['./drill.component.css'],
 

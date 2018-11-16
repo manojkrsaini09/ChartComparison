@@ -23,11 +23,18 @@
     Chart Title :<input type="text" [(ngModel)]="chartTitle" /> <button (click)="updateTitle()">Update Title</button>
     <br/><br/>
 
-    Chart Type :<input type="text" [(ngModel)]="chartType" /> <button (click)="updateType()">Update Type</button>
+    <!--Chart Type :<input type="text" [(ngModel)]="chartType" /> <button (click)="updateType()">Update Type</button>-->
+    Drill Type : <select [(ngModel)]='chartType' class='form-control'  (change)="updateType()">
+      <option value='column'>Column</option>
+      <option value='pie'>Pie</option>
+      <option value='spline'>Line</option>
+    </select>
+    <br/><br/>
    <!-- <button (click)="toggleSeriesType()">1st series type toggle</button>  -->
     
   </div>
   <div style="width:65%; float: left;">
+    <button (click)="back()">BACK</button>
     <highcharts-chart 
       [Highcharts]="Highcharts"
       [options]="optFromInput"
@@ -41,4 +48,11 @@
 </div>
 
 <br/>
+
+
+<drill-high-comp></drill-high-comp>
+<br/>
+<br/>
+
+<realtimedatachart-high-comp></realtimedatachart-high-comp>
 <hr/>
