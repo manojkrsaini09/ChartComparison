@@ -34,6 +34,8 @@ import { InteractiveChartsComponent } from './InteractiveCharts/interactive.comp
 import { InteractiveAmChartsComponent } from './InteractiveAmCharts/interactiveam.component';
 import { DrillChartsComponent } from './InteractiveCharts/drill.component';
 import { RealTimeChartsComponent } from './InteractiveCharts/realtimedatachart.component';
+import { RealTimeAMChartsComponent } from './InteractiveAmCharts/interactiveam.realtime.component';
+import { ZoomHighChartComponent } from './InteractiveCharts/zoom.component';
 
 
 const appRoutes: Routes = [
@@ -49,6 +51,8 @@ const appRoutes: Routes = [
   {path: 'interactiveAmCharts' , component : InteractiveAmChartsComponent},
   {path: 'drillCharts' , component : DrillChartsComponent},
   {path: 'realtimeCharts' , component : RealTimeChartsComponent},
+  {path: 'realtimeAMCharts' , component : RealTimeAMChartsComponent},
+  {path: 'zoomHighCharts' , component : ZoomHighChartComponent},
  ];
 
 @NgModule({
@@ -77,7 +81,9 @@ const appRoutes: Routes = [
     InteractiveChartsComponent,
     DrillChartsComponent,
     InteractiveAmChartsComponent,
-    RealTimeChartsComponent
+    RealTimeChartsComponent,
+    RealTimeAMChartsComponent,
+    ZoomHighChartComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

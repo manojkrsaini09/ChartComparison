@@ -131,7 +131,8 @@ export class InteractiveChartsComponent implements OnInit {
     {
         chart: {
             type: "column",
-            animation: true
+            animation: true,
+            zoomType: 'xy'
         },
         title: {
             text: "Basic drilldown"
